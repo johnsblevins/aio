@@ -1,0 +1,43 @@
+---
+- name: Deploy Apache
+  hosts: web01
+  become: true
+  vars:
+    http_host: "mydomain.local"
+    http_conf: "my_domain.conf"
+    http_port: "80"
+  tasks:
+    - name: Install the latest version of Apache
+      yum:
+        name: httpd
+        state: latest
+
+    - name: Create document root for your domain
+      file:
+        path: "/var/www/{{ http_host }}"
+        state: directory
+        #owner: "{{ app_user }}"
+        mode: '0755'
+
+    - name: Copy your index page
+      template:
+        src: "files/index.html.j2"
+        dest: "/var/www/html/index.html"
+    
+    - name: "UFW firewall allow HTTP on port {{ http_port }}"
+      firewalld:
+        zone: public
+        port: "{{ http_port }}/tcp"
+        permanent: true
+        state: enabled
+    
+    - name: Ensure apache is running
+      ansible.builtin.service:
+        name: httpd
+        state: started
+
+  handlers:
+    - name: Restart apache
+      ansible.builtin.service:
+        name: httpd
+        state: restarted

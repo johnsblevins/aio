@@ -1,0 +1,30 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+          "value": "usgovvirginia"
+        },
+        "rgname": {
+            "value": "rg-apache-05"
+        },
+        "vmname": {
+            "value": "web01"
+        },
+        "adminUsername": {
+            "value": "azureadmin"
+        },
+        "linuxOSOffer": {
+            "value": "CentOS"
+        },
+        "linuxOSVersion": {
+            "value": "latest"
+        },
+        "linuxOSPublisher": {
+            "value": "OpenLogic"
+        },
+        "linuxOSSku": {
+            "value": "7.5"
+        }
+    }
+}

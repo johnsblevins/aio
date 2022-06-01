@@ -1,0 +1,2 @@
+ssh-keygen -m PEM -t rsa -b 4096
+az deployment sub create --location usgovvirginia --template-file bicep/main.bicep --parameters bicep/parameters.json --parameters adminPasswordOrKey="$(cat ~/.ssh/id_rsa.pub)"
