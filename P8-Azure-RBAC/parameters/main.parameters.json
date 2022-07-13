@@ -1,0 +1,130 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "roleDefinitions": {
+            "value": [
+                {
+                    "name": "417b460e-4f30-5598-a1e8-e9a44c896f83",
+                    "roleName": "Custom Virtual Machine Contributor",
+                    "description": "Custom role for deploying virtual machines.",
+                    "permissions": [
+                        {
+                            "actions": [
+                                "Microsoft.Authorization/*/read",
+                                "Microsoft.Compute/availabilitySets/*",
+                                "Microsoft.Compute/locations/*",
+                                "Microsoft.Compute/virtualMachines/*",
+                                "Microsoft.Compute/virtualMachineScaleSets/*",
+                                "Microsoft.Compute/disks/write",
+                                "Microsoft.Compute/disks/read",
+                                "Microsoft.Compute/disks/delete",
+                                "Microsoft.DevTestLab/schedules/*",
+                                "Microsoft.Insights/alertRules/*",
+                                "Microsoft.Network/applicationGateways/backendAddressPools/join/action",
+                                "Microsoft.Network/loadBalancers/*",
+                                "Microsoft.Network/locations/*",
+                                "Microsoft.Network/networkInterfaces/*",
+                                "Microsoft.Network/networkSecurityGroups/*",
+                                "Microsoft.Network/publicIPAddresses/join/action",
+                                "Microsoft.Network/publicIPAddresses/read",
+                                "Microsoft.Network/virtualNetworks/read",
+                                "Microsoft.Network/virtualNetworks/subnets/join/action",
+                                "Microsoft.RecoveryServices/locations/*",
+                                "Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write",
+                                "Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/*/read",
+                                "Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read",
+                                "Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write",
+                                "Microsoft.RecoveryServices/Vaults/backupPolicies/read",
+                                "Microsoft.RecoveryServices/Vaults/backupPolicies/write",
+                                "Microsoft.RecoveryServices/Vaults/read",
+                                "Microsoft.RecoveryServices/Vaults/usages/read",
+                                "Microsoft.RecoveryServices/Vaults/write",
+                                "Microsoft.ResourceHealth/availabilityStatuses/read",
+                                "Microsoft.Resources/deployments/*",
+                                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                                "Microsoft.SqlVirtualMachine/*",
+                                "Microsoft.Storage/storageAccounts/listKeys/action",
+                                "Microsoft.Storage/storageAccounts/read",
+                                "Microsoft.Support/*",
+                                "Microsoft.SerialConsole/serialPorts/connect/action",
+                                "Microsoft.Compute/cloudServices/*",
+                                "Microsoft.Compute/sshPublicKeys/write",
+                                "Microsoft.Compute/sshPublicKeys/read",
+                                "Microsoft.Compute/sshPublicKeys/delete",
+                                "Microsoft.Compute/sshPublicKeys/generateKeyPair/action"
+                            ],
+                            "dataActions": [],
+                            "notActions": [],
+                            "notDataActions": []
+                        }
+                    ],
+                    "assignableScopes": [
+                        "/subscriptions/f86eed1f-a251-4b29-a8b3-98089b46ce6c"
+                    ],                    
+                    "type": "Microsoft.Authorization/roleDefinitions"                 
+                },
+                {
+                    "name": "417b460e-4f30-5598-a1e8-e9a44c896f84",
+                    "roleName": "Custom Virtual Machine Contributor 2",
+                    "description": "Custom role for deploying virtual machines.",
+                    "permissions": [
+                        {
+                            "actions": [
+                                "Microsoft.Authorization/*/read",
+                                "Microsoft.Compute/availabilitySets/*",
+                                "Microsoft.Compute/locations/*",
+                                "Microsoft.Compute/virtualMachines/*",
+                                "Microsoft.Compute/virtualMachineScaleSets/*",
+                                "Microsoft.Compute/disks/write",
+                                "Microsoft.Compute/disks/read",
+                                "Microsoft.Compute/disks/delete",
+                                "Microsoft.DevTestLab/schedules/*",
+                                "Microsoft.Insights/alertRules/*",
+                                "Microsoft.Network/applicationGateways/backendAddressPools/join/action",
+                                "Microsoft.Network/loadBalancers/*",
+                                "Microsoft.Network/locations/*",
+                                "Microsoft.Network/networkInterfaces/*",
+                                "Microsoft.Network/networkSecurityGroups/*",
+                                "Microsoft.Network/publicIPAddresses/join/action",
+                                "Microsoft.Network/publicIPAddresses/read",
+                                "Microsoft.Network/virtualNetworks/read",
+                                "Microsoft.Network/virtualNetworks/subnets/join/action",
+                                "Microsoft.RecoveryServices/locations/*",
+                                "Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write",
+                                "Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/*/read",
+                                "Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read",
+                                "Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write",
+                                "Microsoft.RecoveryServices/Vaults/backupPolicies/read",
+                                "Microsoft.RecoveryServices/Vaults/backupPolicies/write",
+                                "Microsoft.RecoveryServices/Vaults/read",
+                                "Microsoft.RecoveryServices/Vaults/usages/read"
+                            ],
+                            "dataActions": [],
+                            "notActions": [],
+                            "notDataActions": []
+                        }
+                    ],
+                    "assignableScopes": [
+                        "/subscriptions/f86eed1f-a251-4b29-a8b3-98089b46ce6c"
+                    ],                    
+                    "type": "Microsoft.Authorization/roleDefinitions"                 
+                }
+            ]            
+        },
+        "roleAssignments": {
+            "value": [
+                {
+                    "name": "Custom-Virtual-Machine-Contributor",
+                    "principalId": "36805b3f-52fb-4452-ba0b-085de56bf023",
+                    "roleDefinitionId": "417b460e-4f30-5598-a1e8-e9a44c896f83"
+                },
+                {
+                    "name": "Virtual-Machine-Contributor",
+                    "principalId": "36805b3f-52fb-4452-ba0b-085de56bf023",
+                    "roleDefinitionId": "9980e02c-c2be-4d73-94e8-173b1dc7cf3c"
+                }
+            ]
+        }
+    }
+}

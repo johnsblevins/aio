@@ -1,4 +1,5 @@
 # Azure Inside Out
 
+Demonstration Environments:
 * [Ansible Demo](ansible/README.md)
-* Update 1
+* [Azure Inside Out Part 8 - Azure RBAC](P8-Azure-RBAC/README.md)
