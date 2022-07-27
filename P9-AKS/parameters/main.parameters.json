@@ -1,0 +1,21 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "usgovvirginia"
+        },
+        "aksDeployments": {
+            "value": [
+                {
+                    "clusterName": "aks01",
+                    "dnsPrefix": "aks01",
+                    "agentCount": 3,
+                    "agentVMSize": "standard_d2s_v3",
+                    "linuxAdminUsername": "azureadmin",
+                    "location": "usgovvirginia"
+                }
+            ]            
+        }
+    }
+}
