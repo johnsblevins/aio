@@ -248,18 +248,3 @@ resource vmNamePrefix_resource 'Microsoft.Compute/virtualMachines@2019-12-01' = 
     nicNamePrefix_resource
   ]
 }]
-
-resource customscript 'Microsoft.Compute/virtualMachines/extensions@2022-03-01'= [for i in range(0, numberOfInstances): {
-  name: 'config-app'
-  parent: vmNamePrefix_resource[i]
-  location: location
-  properties: {
-    publisher: 'Microsoft.Compute'
-    type: 'CustomScriptExtension'
-    typeHandlerVersion: '1.10'
-    autoUpgradeMinorVersion: true
-    settings: {
-      commandToExecute: ''
-    }
-  }
-}]

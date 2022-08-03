@@ -189,17 +189,3 @@ resource vm 'Microsoft.Compute/virtualMachines@2021-11-01' = [for i in range(0, 
   }
 }]
 
-resource customscript 'Microsoft.Compute/virtualMachines/extensions@2022-03-01'= [for i in range(0, numberOfInstances): {
-  name: 'config-app'
-  parent: vm[i]
-  location: location
-  properties: {
-    publisher: 'Microsoft.Compute'
-    type: 'CustomScriptExtension'
-    typeHandlerVersion: '1.10'
-    autoUpgradeMinorVersion: true
-    settings: {
-      commandToExecute: 'powershell.exe -command {Install-WindowsFeature -name Web-Server -IncludeManagementTools}'
-    }
-  }
-}]
