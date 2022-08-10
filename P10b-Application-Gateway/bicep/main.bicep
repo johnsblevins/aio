@@ -20,5 +20,6 @@ module deploy_appgw '../../bicep-core/appgw.bicep' = [for appGateway in appGatew
     adminPassword: adminPassword
     location: appGateway.location
     vmSize: appGateway.vmsize
+    appGatewayName: appGateway.appGatewayName
   }
 }]

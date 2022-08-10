@@ -11,13 +11,15 @@ param location string = resourceGroup().location
 @description('Size of the virtual machine.')
 param vmSize string = 'Standard_B2ms'
 
+param appGatewayName string = 'myAppGateway'
+
 var virtualMachines_myVM_name = 'myVM'
 var virtualNetworks_myVNet_name = 'myVNet'
 var myNic_name = 'net-int'
 var ipconfig_name = 'ipconfig'
 var publicIPAddress_name = 'public_ip'
 var nsg_name = 'vm-nsg'
-var applicationGateways_myAppGateway_name = 'myAppGateway'
+
 var vnet_prefix = '10.0.0.0/16'
 var ag_subnet_prefix = '10.0.0.0/24'
 var backend_subnet_prefix = '10.0.1.0/24'
@@ -155,7 +157,7 @@ resource myVM_IIS 'Microsoft.Compute/virtualMachines/extensions@2021-11-01' = [f
 }]
 
 resource myAppGateway 'Microsoft.Network/applicationGateways@2021-08-01' = {
-  name: applicationGateways_myAppGateway_name
+  name: appGatewayName
   location: location
   properties: {
     sku: {
@@ -218,10 +220,10 @@ resource myAppGateway 'Microsoft.Network/applicationGateways@2021-08-01' = {
             id: AppGW_AppFW_Pol.id
           }
           frontendIPConfiguration: {
-            id: resourceId('Microsoft.Network/applicationGateways/frontendIPConfigurations', applicationGateways_myAppGateway_name, 'appGwPublicFrontendIp')
+            id: resourceId('Microsoft.Network/applicationGateways/frontendIPConfigurations', appGatewayName, 'appGwPublicFrontendIp')
           }
           frontendPort: {
-            id: resourceId('Microsoft.Network/applicationGateways/frontendPorts', applicationGateways_myAppGateway_name, 'port_80')
+            id: resourceId('Microsoft.Network/applicationGateways/frontendPorts', appGatewayName, 'port_80')
           }
           protocol: 'Http'
           requireServerNameIndication: false
@@ -235,13 +237,13 @@ resource myAppGateway 'Microsoft.Network/applicationGateways@2021-08-01' = {
           ruleType: 'Basic'
           priority: 10
           httpListener: {
-            id: resourceId('Microsoft.Network/applicationGateways/httpListeners', applicationGateways_myAppGateway_name, 'myListener')
+            id: resourceId('Microsoft.Network/applicationGateways/httpListeners', appGatewayName, 'myListener')
           }
           backendAddressPool: {
-            id: resourceId('Microsoft.Network/applicationGateways/backendAddressPools', applicationGateways_myAppGateway_name, 'myBackendPool')
+            id: resourceId('Microsoft.Network/applicationGateways/backendAddressPools', appGatewayName, 'myBackendPool')
           }
           backendHttpSettings: {
-            id: resourceId('Microsoft.Network/applicationGateways/backendHttpSettingsCollection', applicationGateways_myAppGateway_name, 'myHTTPSetting')
+            id: resourceId('Microsoft.Network/applicationGateways/backendHttpSettingsCollection', appGatewayName, 'myHTTPSetting')
           }
         }
       }
@@ -329,7 +331,7 @@ resource myNic 'Microsoft.Network/networkInterfaces@2021-08-01' = [for i in rang
           privateIPAddressVersion: 'IPv4'
           applicationGatewayBackendAddressPools: [
             {
-              id: resourceId('Microsoft.Network/applicationGateways/backendAddressPools', applicationGateways_myAppGateway_name, 'myBackendPool')
+              id: resourceId('Microsoft.Network/applicationGateways/backendAddressPools', appGatewayName, 'myBackendPool')
             }
           ]
         }

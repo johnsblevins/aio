@@ -8,7 +8,7 @@
         "appGateways": {
             "value": [
                 {
-                    "name": "appgw-jbsawesomeapp",
+                    "appGatewayName": "appgw-va-01",
                     "location": "usgovvirginia",
                     "vmSize": "Standard_B2ms"
                 }
