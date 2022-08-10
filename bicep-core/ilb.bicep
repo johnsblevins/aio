@@ -189,3 +189,19 @@ resource vm 'Microsoft.Compute/virtualMachines@2021-11-01' = [for i in range(0, 
   }
 }]
 
+resource myVM_IIS 'Microsoft.Compute/virtualMachines/extensions@2021-11-01' = [for i in range(0, numberOfInstances): {
+  name: '${vmNamePrefix}${i}/IIS'
+  location: location
+  properties: {
+    autoUpgradeMinorVersion: true
+    publisher: 'Microsoft.Compute'
+    type: 'CustomScriptExtension'
+    typeHandlerVersion: '1.4'
+    settings: {
+      commandToExecute: 'powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path "C:\\inetpub\\wwwroot\\Default.htm" -Value $($env:computername)'
+    }
+  }
+  dependsOn: [
+    vm
+  ]
+}]
