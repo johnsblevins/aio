@@ -13,7 +13,7 @@ resource rg 'Microsoft.Resources/resourceGroups@2021-04-01' = {
 }
 
 module deploy_appgw '../../bicep-core/appgw.bicep' = [for appGateway in appGateways: {
-  name: 'Def-${appGateway.name}-${deploymentid}'
+  name: 'Def-${appGateway.appGatewayName}-${deploymentid}'
   scope: rg
   params: {
     adminUsername: adminUsername    
