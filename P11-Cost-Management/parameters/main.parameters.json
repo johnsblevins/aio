@@ -1,0 +1,51 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "usgovvirginia"
+        },
+        "budgets": {
+            "value": [
+                {
+                    "budgetName": "email-admin",
+                    "endDate": "2022-10-01",
+                    "contactGroups": [
+                        "email-admins"
+                    ],
+                    "contactEmails": [
+                        "joblevin@microsoft.com"
+                    ],
+                    "resourceGroupFilterValues": [],
+                    "startDate": "2022-08-01",
+                    "meterCategoryFilterValues": [
+                        "Storage",
+                        "Key Vault"
+                    ]
+                }
+            ]            
+        },
+        "actionGroups": {
+            "value": [
+                {
+                    "actionGroupName": "email-admins",
+                    "actionGroupShortName": "email-admins",
+                    "emailReceivers": [
+                        {
+                            "name": "Primary-Admin-Email",
+                            "emailAddress": "joblevin@microsoft.com"
+                        }
+                    ],
+                    "smsReceivers": [
+                        {
+                            "name": "Primary-Admin-SMS",
+                            "countryCode": "1",
+                            "phoneNumber": "4046452976"
+                        }
+                    ]
+                }
+            ]
+        }
+
+    }
+}
