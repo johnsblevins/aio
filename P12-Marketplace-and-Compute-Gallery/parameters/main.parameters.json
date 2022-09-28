@@ -1,0 +1,19 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "usgovvirginia"
+        },
+        "imagegalleries": {
+            "value": [
+                {
+                    "location": "usgovvirginia",
+                    "name": "img-gallery-usgv",
+                    "_artifactsLocation": "https://github.com/Azure/azure-quickstart-templates/tree/master/demos/imagebuilder-windowsbaseline",
+                    "_artifactsLocationSasToken": ""
+                }
+            ]            
+        }
+    }
+}
